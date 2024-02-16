@@ -117,6 +117,9 @@
   * I should be able to view charts visualizing event details
   * So that I can quickly understand the data.
 
+* Serverless Functions
 
 
+In the Meet app, serverless functions handle authorization for accessing public calendar events from the Google Calendar API. These functions are more efficient than a full server for this purpose. They generate and provide access tokens for secure access to the API. AWS Lambda is the chosen cloud-service provider for these functions, improving the app's scalability and cost-effectiveness.
 
+  
