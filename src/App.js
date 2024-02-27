@@ -1,10 +1,11 @@
 import React from 'react';
+import EventList from './components/EventList';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <div id="event-list"></div>
+      <EventList />
     </div>
   );
 }
