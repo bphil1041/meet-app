@@ -27,7 +27,6 @@ describe('<CitySearch /> component', () => {
         expect(suggestionList).toBeInTheDocument();
         expect(suggestionList).toHaveClass('suggestions');
     });
-
     test('updates list of suggestions correctly when user types in city textbox', async () => {
         const user = userEvent.setup();
         const allEvents = await getEvents();
@@ -50,6 +49,4 @@ describe('<CitySearch /> component', () => {
             expect(suggestionListItems[i].textContent).toBe(suggestions[i]);
         }
     });
-
-
 });
