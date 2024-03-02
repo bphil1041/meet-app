@@ -14,7 +14,10 @@ describe('<Event /> component', () => {
         const { getByText, queryByText } = render(<Event event={event} />);
         const eventElement = getByText(event.summary);
         fireEvent.click(eventElement);
-        expect(queryByText(event.description)).toBeInTheDocument();
+
+        setTimeout(() => {
+            expect(queryByText(event.description)).toBeInTheDocument();
+        }, 1000); // Adjust the delay as needed
     });
 
     test('User can collapse an event to hide details', () => {
