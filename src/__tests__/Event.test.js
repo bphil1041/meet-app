@@ -3,7 +3,11 @@ import Event from '../components/Event';
 import mockData from '../mock-data';
 
 describe('<Event /> component', () => {
-    const event = mockData[0]; // Directly access the event if 'items' is not present
+    const event = mockData[0];
+
+    test('renders event details button with the title (show details)', () => {
+        expect(EventComponent.queryByText('show details')).toBeInTheDocument();
+    });
 
     test('An event element is collapsed by default', () => {
         const { queryByText } = render(<Event event={event} />);
@@ -28,3 +32,7 @@ describe('<Event /> component', () => {
         expect(queryByText(event.description)).not.toBeInTheDocument();
     });
 });
+
+
+
+
