@@ -14,8 +14,11 @@ test('default value of the input field is 32', () => {
 });
 
 test('value of the input field changes when user types in it', async () => {
-    render(<NumberOfEvents />);
+    let currentNOE = 32;
+    const setCurrentNOE = (value) => { currentNOE = value };
+    render(<NumberOfEvents setCurrentNOE={setCurrentNOE} />);
     const inputElement = screen.getByRole('spinbutton');
     fireEvent.change(inputElement, { target: { value: '10' } });
     expect(inputElement).toHaveValue(10);
+    expect(currentNOE).toBe(10);
 });
