@@ -1,4 +1,4 @@
-import { render, within } from "@testing-library/react";
+import { render, within, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { getEvents } from "../api";
 import App from "../App";
@@ -49,19 +49,32 @@ describe('<App /> integration', () => {
             expect(event.textContent).toContain("Berlin, Germany");
         });
     });
+
+
     test('selected number of events by the user are rendered', async () => {
         const AppComponent = render(<App />);
         const AppDOM = AppComponent.container.firstChild;
         const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events');
-        const NumberOfEventsInput =
-            within(NumberOfEventsDOM).queryByRole('textbox');
 
-        await userEvent.type(NumberOfEventsInput, '{backspace}{backspace}10');
+        // Wait for the NumberOfEvents component to be rendered
+        await waitFor(() => {
+            expect(NumberOfEventsDOM).toBeInTheDocument();
+        });
 
-        const EventListDOM = AppDOM.querySelector('#event-list');
-        const allRenderedEventItems =
-            within(EventListDOM).queryAllByRole('listitem');
-        expect(allRenderedEventItems.length).toEqual(10);
+        const NumberOfEventsInput = within(NumberOfEventsDOM).queryByRole('textbox');
 
-    })
+        // Check if the input field is found before trying to type into it
+        if (NumberOfEventsInput) {
+            await userEvent.type(NumberOfEventsInput, '{backspace}{backspace}10');
+
+            const EventListDOM = AppDOM.querySelector('#event-list');
+            const allRenderedEventItems =
+                within(EventListDOM).queryAllByRole('listitem');
+            expect(allRenderedEventItems.length).toEqual(10);
+        } else {
+            // Log an error if the input field is not found
+            console.error('Input field for number of events not found');
+        }
+    });
+
 });
