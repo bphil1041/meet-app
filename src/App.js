@@ -6,8 +6,6 @@ import { extractLocations, getEvents } from './api';
 import './App.css';
 import { InfoAlert } from './components/Alert';
 
-a
-
 const App = () => {
   const [allLocations, setAllLocations] = useState([]);
   const [currentNOE, setCurrentNOE] = useState(32);
