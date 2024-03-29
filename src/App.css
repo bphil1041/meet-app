@@ -86,11 +86,11 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
-  background: linear-gradient(to right, #f9f9b7, #dfafa2);
+  background: linear-gradient(to right, #f9deb7, #dfa2a2);
 }
 
 body {
-  background: linear-gradient(to right, #b7f9d1, #a2b6df);
+  background: linear-gradient(to right, #ebf6cd, #bcd7b9);
   font-family: monospace;
   font-size: large;
 }
