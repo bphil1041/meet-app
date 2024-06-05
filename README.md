@@ -1,3 +1,7 @@
+# Description
+
+The Meet App is a progressive web application (PWA) built using React and the test-driven development technique. THe application uses the google Calendar API to fetch upcoming events. 
+
 # Features
 
 * Feature 1: Filter Events By City
